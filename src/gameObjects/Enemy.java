@@ -3,8 +3,10 @@ package gameObjects;
 import java.awt.Point;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
+import java.awt.geom.Point2D.Double;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import Physics.Collision;
 import Physics.MathsMethods;
 import game.Game;
 import game.ID;
@@ -13,20 +15,23 @@ public abstract class Enemy extends RectangleObject{
 	protected int fieldOfVeiw = 90;
 	protected Point2D.Double playerDirection;
 	protected boolean canSeePlayer = false;
+	protected Point2D.Double playerLastPosition;
+	protected CopyOnWriteArrayList<GameObject> objects;
+	protected boolean seenPlayer = false;
+	protected boolean onPath;
 	
 
 	public Enemy(double x, double y,double width,double height,ID id, Game game) {
 		super(x, y,width,height, 1, id, game);
 		playerDirection = new Point2D.Double();
-		
-		
+		playerLastPosition = new Point2D.Double();
 	}
 	
 	protected boolean canSeePlayer() {
 		double angle = MathsMethods.getVectorAngle(playerDirection, rotation);
 		double angleDegrees = Math.toDegrees(angle);
 		double distance = MathsMethods.length(playerDirection.x, playerDirection.y);
-		if((angleDegrees<45)&&(distance<1000)&& isSightClear()) {
+		if((angleDegrees<45)&&(distance<500)&& isSightClear()) {
 			return true;
 		}
 		else {
@@ -34,11 +39,33 @@ public abstract class Enemy extends RectangleObject{
 		}
 	}
 	
-	private boolean isSightClear(){
-		CopyOnWriteArrayList<GameObject> objects = game.getHandler().getObjects();
+	protected void moveToPoint(Point2D.Double point) {
+		rotation.setLocation(point.getX()-x, point.getY()-y);
+		double[] unitVector = MathsMethods.getUnitVector(x,y,point.getX(),point.getY());
+		if(MathsMethods.distance(x, y, point.getX(), point.getY())>1) {
+			
+			x+=unitVector[0]*vX;
+			y+=unitVector[1]*vY;
+		}
 		
+		
+	}
+	
+	protected Point2D.Double getPlayerPosition(){
 		try {
-			Player player = this.getPlayer(objects);
+			Player player = this.getPlayer();
+			Point2D.Double playerPos = new Point2D.Double(player.getX(), player.getY());
+			return (Double) playerPos.clone();
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	private boolean isSightClear(){
+		try {
+			Player player = this.getPlayer();
 			for(GameObject obj:objects){
 				if(obj.id == ID.Wall){
 					Wall wall = (Wall)obj;
@@ -59,21 +86,36 @@ public abstract class Enemy extends RectangleObject{
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			return true;
+			return false;
 		}
 		
 	}
 	
-	protected void setPlayerDirection(CopyOnWriteArrayList<GameObject> objects) {
+	public void update(CopyOnWriteArrayList<GameObject> objects) {
+		this.objects = objects;
+	}
+	
+	protected void setLastPlayerPosition() {
 		try {
-			Player player = getPlayer(objects);
-			playerDirection.setLocation(player.getX()-x, player.getY()-y);
+			Player player = this.getPlayer();
+			playerLastPosition.setLocation(player.getX(), player.getY());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	private Player getPlayer(CopyOnWriteArrayList<GameObject> objects) throws Exception{
+	protected void setPlayerDirection() {
+		try {
+			Player player = getPlayer();
+			double pX = player.getX();
+			double pY = player.getY();
+			playerDirection.setLocation(pX-x, pY-y);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private Player getPlayer() throws Exception{
 		for(GameObject obj:objects) {
 			if(obj.id == ID.Player) {
 				Player player = (Player)obj;

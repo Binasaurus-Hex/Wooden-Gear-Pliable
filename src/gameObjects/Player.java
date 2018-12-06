@@ -103,6 +103,7 @@ public class Player extends RectangleObject {
 
 	@Override
 	public void render(Graphics g) {
+		g.setColor(Color.white);
 		aimCircle.render(g);
 		Drawable action = (graphics)-> graphics.drawImage(sprite,(int)(x-halfWidth), (int)(y-halfHeight),(int)(width),(int)(height), null);
 		renderRotated(g,action);

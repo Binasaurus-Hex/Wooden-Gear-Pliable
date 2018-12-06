@@ -11,13 +11,14 @@ import gameObjects.GameObject;
 
 public class Camera extends GameObject{
 	private int vX,vY;
+	public boolean followPlayer = true;
 	
 
 	public Camera(double x, double y, double width, double height, ID id, Game game) {
 		super(x, y, width, height, ID.Camera, game);
 		this.setVisible(true);
-		this.vX = 1;
-		this.vY = 1;
+		this.vX = 3;
+		this.vY = 3;
 	}
 
 	@Override
@@ -34,6 +35,7 @@ public class Camera extends GameObject{
 		else if(game.key.isKeyDown("L")){
 			x+=vX;
 		}
+		
 	}
 
 	@Override
@@ -49,6 +51,7 @@ public class Camera extends GameObject{
 		int yOffset = (int) (y);
 		
 		at.translate((game.getWindowWidth()/2)-xOffset,(game.getWindowHeight()/2)-yOffset);
+		at.scale(1, 1);
 		return at;
 		
 	}

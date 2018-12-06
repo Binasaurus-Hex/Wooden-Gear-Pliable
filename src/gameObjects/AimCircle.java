@@ -39,11 +39,11 @@ public class AimCircle extends CircleObject {
 		double[] unitVector = MathsMethods.getUnitVector(x, y,cursorX,cursorY);
 		rotation.setLocation(unitVector[0], unitVector[1]);
 		
-		if(distance>(radius/2)){
+		if(distance>(radius/2)&& camera.followPlayer){
 			camera.setX(x+(rotation.getX()*(radius/2)));
 			camera.setY(y+(rotation.getY()*(radius/2)));
 		}
-		else{
+		else if(camera.followPlayer){
 			camera.setX(cursorX);
 			camera.setY(cursorY);	
 		}
