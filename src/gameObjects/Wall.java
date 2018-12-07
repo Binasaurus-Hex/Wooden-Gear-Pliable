@@ -15,13 +15,10 @@ import game.ImageLoader;
 
 public class Wall extends RectangleObject {
 	private String name;
-	private BufferedImage textureImage;
 
 	public Wall(double x, double y, double width, double height,Game game,String name) {
 		super(x, y, width, height, 1, ID.Wall, game);
 		this.name = name;
-		ImageLoader loader = new ImageLoader();
-		this.textureImage = loader.loadImage("/depthBlock.png");
 		
 	}
 

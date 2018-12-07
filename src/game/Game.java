@@ -14,8 +14,8 @@ import gameObjects.GameObject;
 public class Game extends Canvas implements Runnable{
 	
 	private static final long serialVersionUID = 1L;
-	private int windowWidth = 1280;
-	private int windowHeight = 720;
+	private int windowWidth = 1920;
+	private int windowHeight = 1080;
 	@SuppressWarnings("unused")
 	private Window window;
 	private Handler handler;
@@ -35,9 +35,11 @@ public class Game extends Canvas implements Runnable{
 	public Camera camera;
 	public Key key;
 	public Cursor cursor;
+	private int score;
+	private ScoreCalculator scoreCalculator;
 	
 	public Game(){
-		
+		scoreCalculator = new ScoreCalculator(this);
 		key = new Key();
 		cursor = new Cursor();
 		//initializing the main game music
@@ -188,8 +190,8 @@ public class Game extends Canvas implements Runnable{
 	private void update(){
 		switch(currentState){
 		case Game:
-			//main game update
 			menuMusic.stop();
+			scoreCalculator.update();
 			handler.update();
 			if(musicOn) {
 				if(!gameMusic.isPlaying())gameMusic.loop();
@@ -318,6 +320,14 @@ public class Game extends Canvas implements Runnable{
 	public static void main(String[] a){
 		Game game = new Game();
 		game.start();
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
 	}
 
 }

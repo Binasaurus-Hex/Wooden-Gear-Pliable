@@ -13,14 +13,21 @@ import game.Drawable;
 import game.Game;
 import game.ID;
 import game.ImageLoader;
+import game.Sound;
 
 public class Player extends RectangleObject {
 	private AimCircle aimCircle;
-	private BufferedImage sprite;
+	private BufferedImage sprite1;
+	private BufferedImage sprite2;
 	private double baseAttackTime;
 	Timer timer;
 	private boolean canShoot;
+	private boolean shooting = false;
 	public int ammo;
+	public final int clipSize = 6;
+	private boolean reset = true;
+	private Sound shoot;
+	private Sound empty;
 	
 
 	public Player(double x, double y,double width,double height,Game game) {
@@ -29,12 +36,15 @@ public class Player extends RectangleObject {
 		this.vY = 0.9;
 		aimCircle = new AimCircle(x,y,600,ID.AimCircle,game,this);
 		ImageLoader loader = new ImageLoader();
-		sprite = loader.loadImage("/gunMan.png");
-		baseAttackTime = 100;
+		sprite1 = loader.loadImage("/spy1.png");
+		sprite2 = loader.loadImage("/spy2.png");
+		baseAttackTime = 200;
 		timer = new Timer();
 		canShoot = true;
 		rotation = aimCircle.getRotation();
-		ammo = 6;
+		ammo = clipSize;
+		shoot = new Sound("/gunSilencer.wav");
+		empty = new Sound("/gunEmpty.wav");
 		
 	}
 
@@ -59,15 +69,24 @@ public class Player extends RectangleObject {
 		if(game.key.isKeyDown("D")){
 			x+=vX;
 		}
-		if(game.cursor.isDown()&&canShoot){
+		if(game.cursor.isDown()&&canShoot&&reset){
 			shootBullet();
 			canShoot = false;
 			timer.schedule(new TimerTask(){
 				@Override
 				public void run() {
+					shoot.stop();
 					canShoot = true;
+					shooting = false;
 				}
 			}, (long) baseAttackTime);
+		}
+		if(game.cursor.isDown()&&ammo<1){
+			if(!empty.isPlaying())empty.play();
+		}
+		if(!game.cursor.isDown()){
+			reset = true;
+			empty.stop();
 		}
 
 	}
@@ -81,7 +100,10 @@ public class Player extends RectangleObject {
 		double yVel = rotation.getY()*5;
 		Bullet bullet = new Bullet(xPos,yPos,xVel,yVel,game);
 		game.getHandler().add(bullet);
+		shooting = true;
+		reset = false;
 		ammo--;
+		if(!shoot.isPlaying())shoot.play();
 	}
 	
 	private boolean checkCollisions(CopyOnWriteArrayList<GameObject> objects){
@@ -113,9 +135,22 @@ public class Player extends RectangleObject {
 
 	@Override
 	public void render(Graphics g) {
+		BufferedImage sprite;
+		if(shooting){
+			sprite = sprite2;
+		}
+		else{
+			sprite = sprite1;
+		}
 		g.setColor(Color.white);
 		aimCircle.render(g);
-		Drawable action = (graphics)-> graphics.drawImage(sprite,(int)(x-halfWidth), (int)(y-halfHeight),(int)(width),(int)(height), null);
+		Drawable action = (graphics)->{
+			graphics.setColor(Color.green);
+			//graphics.drawRect((int)(x-halfWidth),(int)(y-halfHeight),(int)(width),(int)(height));
+			g.setColor(Color.red);
+			//graphics.drawRect((int)(x-halfWidth+10),(int)(y-halfHeight+20),(int)(width-10),(int)(height-40));
+			graphics.drawImage(sprite,(int)(x-65), (int)(y-65),(int)(130),(int)(130), null);
+		};
 		renderRotated(g,action);
 	}
 

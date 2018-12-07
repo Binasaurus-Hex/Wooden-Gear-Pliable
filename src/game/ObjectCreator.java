@@ -30,11 +30,11 @@ public class ObjectCreator {
 		gameObjects.addAll(getMap());
 		gameObjects.addAll(getEnemies());
 		
-		Player player = new Player(640,360,120,100,game);
+		Player player = new Player(640,100,80,80,game);
 		player.setVisible(true);
 		gameObjects.add(player);
 		
-		HUD hud = new HUD(game);
+		HUD hud = new HUD(player,game);
 		hud.setVisible(true);
 		gameObjects.add(hud);
 		
@@ -56,6 +56,7 @@ public class ObjectCreator {
 		path2.add(new Point2D.Double(2100, -300));
 		path2.add(new Point2D.Double(1550, -300));
 		BasicEnemy enemy2 = new BasicEnemy(1550,-750,100,100,game,path2);
+		enemy2.setMass(5);
 		enemy2.setVisible(true);
 		enemies.add(enemy2);
 		
@@ -195,13 +196,7 @@ public class ObjectCreator {
 	
 	private CopyOnWriteArrayList<GameObject> getFloors(){
 		CopyOnWriteArrayList<GameObject> floors = new CopyOnWriteArrayList<GameObject>();
-		Floor floor1 = new Floor(150,50,950,600,32,"/cityTile.png",game);
-		//floor1.setVisible(true);
-		//floors.add(floor1);
 		
-		Floor floor2 = new Floor(150,-300,500,500,32,"/cityTile.png",game);
-		//floor2.setVisible(true);
-		//floors.add(floor2);
 		return floors;
 	}
 	

@@ -47,8 +47,8 @@ public class AimCircle extends CircleObject {
 
 	@Override
 	public void render(Graphics g) {
-		g.drawOval((int)(x-radius),(int)(y-radius),(int)(radius*2),(int)(radius*2));
-		g.drawOval((int)(cursor.getX()+camera.getX()-(game.getWindowWidth()/2)),(int)(cursor.getY()+camera.getY()-(game.getWindowHeight()/2)), 10, 10);
-		g.setColor(Color.red);
+		//g.drawOval((int)(x-radius),(int)(y-radius),(int)(radius*2),(int)(radius*2));
+		//g.drawOval((int)(cursor.getX()+camera.getX()-(game.getWindowWidth()/2)),(int)(cursor.getY()+camera.getY()-(game.getWindowHeight()/2)), 10, 10);
+		//g.setColor(Color.red);
 	}
 }

@@ -12,10 +12,13 @@ import game.Game;
 import game.ID;
 
 public class HUD extends GameObject{
-	public int score;
+	private int score;
+	private Player player;
 	
-	public HUD(Game game) {
-		super(100, 100, 0, 0, ID.HUD, game);
+	public HUD(Player player,Game game) {
+		super(0, 0, 0, 0, ID.HUD, game);
+		this.score = game.getScore();
+		this.player = player;
 	}
 
 	@Override
@@ -30,7 +33,9 @@ public class HUD extends GameObject{
 			Font font = new Font("Impact",Font.PLAIN,30);
 			graphics.setFont(font);
 			graphics.setColor(Color.red);
-			graphics.drawString("ammo", (int)x,(int)y);
+			graphics.drawString("ammo", 50,50);
+			g.drawRect(150, 20, 100, 40);
+			g.drawString(String.valueOf(player.ammo)+" / "+player.clipSize, 170, 50);
 		};
 		this.renderStatic(g, ammo);
 		

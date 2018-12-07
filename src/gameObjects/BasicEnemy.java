@@ -3,7 +3,7 @@ package gameObjects;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.geom.Point2D;
-import java.util.Random;
+import java.awt.image.BufferedImage;
 import java.util.TimerTask;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -11,26 +11,41 @@ import Physics.Collision;
 import game.Drawable;
 import game.Game;
 import game.ID;
+import game.ImageLoader;
 
 public class BasicEnemy extends Enemy {
+	
+	private BufferedImage sprite1;
+	private BufferedImage sprite2;
+	private BufferedImage currentSprite;
+	private int tick = 0;
 
 	public BasicEnemy(double x, double y, double width,double height,Game game,PathList path) {
 		super(x, y, width,height,ID.BasicEnemy, game,path);
 		this.rotation = new Point2D.Double(1,0);
 		vX = 0.5;
 		vY = 0.5;
+		ImageLoader loader = new ImageLoader();
+		sprite1 = loader.loadImage("/robot1.png");
+		sprite2 = loader.loadImage("/robot2.png");
+		currentSprite = sprite1;
 	}
 
 	@Override
 	public void update(CopyOnWriteArrayList<GameObject> objects) {
 		super.update(objects);
+		updateSprite();
 		setPlayerDirection();
 		checkForPlayer();
 		if(seenPlayer&&canSeePlayer) {
+			this.vX = 1.5;
+			this.vY = 1.5;
 			this.moveToPoint(playerLastPosition);
 			
 		}
 		else if(seenPlayer&&!canSeePlayer){
+			this.vX = 0.5;
+			this.vY = 0.5;
 			search();
 		}
 		else {
@@ -38,6 +53,17 @@ public class BasicEnemy extends Enemy {
 		}
 		checkCollisions();
 		
+	}
+	
+	private void updateSprite(){
+		if(tick>30){
+			tick = 0;
+			if(currentSprite.equals(sprite1))currentSprite = sprite2;
+			else currentSprite = sprite1;
+		}
+		else{
+			tick++;
+		}
 	}
 	
 	private void search() {
@@ -103,6 +129,9 @@ public class BasicEnemy extends Enemy {
 			g.setColor(Color.red);
 			g.drawRect((int)(point.getX()-5),(int)(point.getY()-5),10,10);
 		}
+		if(mass == 5){
+			
+		}
 		
 		Drawable vision = (graphics)->{
 			Color visionColor = new Color(0, 255, 0, 100);
@@ -118,9 +147,11 @@ public class BasicEnemy extends Enemy {
 			Color enemyColor = Color.WHITE;
 			graphics.setColor(enemyColor);
 			graphics.fillRect((int)(x-halfWidth),(int)(y-halfHeight),(int)(width),(int)(height));
+			g.drawImage(currentSprite,(int)(x-100),(int)(y-100),(int)(200),(int)(200), null);
 		};
-		renderRotated(g,enemy);
+		
 		renderRotated(g,vision);
+		renderRotated(g,enemy);
 
 	}
 
