@@ -3,8 +3,6 @@ package UI;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.geom.Rectangle2D;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import game.Game;
@@ -37,7 +35,7 @@ public class MenuButton extends UI_Object {
 			g.setColor(Color.cyan);
 			g.fillRect((int)(x-10), (int)(y-10),(int)(width+20),(int)(height+20));
 		}
-		g.setColor(Color.red);
+		g.setColor(Color.BLUE);
 		g.fillRect((int)(x),(int)(y), (int)width, (int)height);
 		g.setColor(Color.white);
 		text.render(g);

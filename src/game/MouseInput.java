@@ -5,7 +5,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import Physics.MathsMethods;
 import UI.UI_Object;
 import gameObjects.GameObject;
 
@@ -84,7 +83,6 @@ public class MouseInput extends MouseAdapter {
 	
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		Point mouse = e.getPoint();
 		switch(game.currentState){
 		case Game:
 			game.cursor.setX(e.getX());

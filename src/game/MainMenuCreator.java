@@ -23,10 +23,13 @@ public class MainMenuCreator {
 	
 	private CopyOnWriteArrayList<GameObject> getButtons(){
 		CopyOnWriteArrayList<GameObject> buttons = new CopyOnWriteArrayList<GameObject>();
-		
-		buttons.add(new MenuButton(500,100,300,100,MenuID.PlayGame,game));
-		buttons.add(new MenuButton(500,250,300,100,MenuID.Controls,game));
-		buttons.add(new MenuButton(500,400,300,100,MenuID.Exit,game));
+		int menuWidth = 300;
+		int menuHeight = 100;
+		int middleX = (int)((game.getWindowWidth()/2)-(menuWidth/2));
+		int middleY = (int)((game.getWindowHeight()/2)-(menuHeight/2));
+		buttons.add(new MenuButton(middleX,middleY-menuHeight-50,menuWidth,menuHeight,MenuID.PlayGame,game));
+		buttons.add(new MenuButton(middleX,middleY,menuWidth,menuHeight,MenuID.Controls,game));
+		buttons.add(new MenuButton(middleX,middleY+menuHeight+50,menuWidth,menuHeight,MenuID.Exit,game));
 		
 		return buttons;
 	}

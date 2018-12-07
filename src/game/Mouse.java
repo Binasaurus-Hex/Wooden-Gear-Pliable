@@ -1,7 +1,5 @@
 package game;
 
-import java.awt.Cursor;
-
 public class Mouse{
 	private int x,y;
 	private boolean isDown;

@@ -3,14 +3,7 @@ package UI;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.TextArea;
-import java.util.Scanner;
 import java.util.concurrent.CopyOnWriteArrayList;
-
-import javax.swing.JFormattedTextField;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
 import game.Game;
 import gameObjects.GameObject;
@@ -31,7 +24,7 @@ public class MenuLabel extends UI_Object {
 
 	@Override
 	public void render(Graphics g) {
-		g.setColor(Color.red);
+		g.setColor(Color.blue);
 		g.fillRect((int)(x),(int)(y), (int)width, (int)height);
 		g.setColor(Color.white);
 		text.render(g);

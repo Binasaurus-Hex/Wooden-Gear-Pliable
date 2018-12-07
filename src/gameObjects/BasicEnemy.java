@@ -2,21 +2,20 @@ package gameObjects;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
-import java.awt.geom.Point2D.Double;
+import java.util.Random;
+import java.util.TimerTask;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import Physics.Collision;
-import Physics.MathsMethods;
 import game.Drawable;
 import game.Game;
 import game.ID;
 
 public class BasicEnemy extends Enemy {
 
-	public BasicEnemy(double x, double y, double width,double height,Game game) {
-		super(x, y, width,height,ID.BasicEnemy, game);
+	public BasicEnemy(double x, double y, double width,double height,Game game,PathList path) {
+		super(x, y, width,height,ID.BasicEnemy, game,path);
 		this.rotation = new Point2D.Double(1,0);
 		vX = 0.5;
 		vY = 0.5;
@@ -27,12 +26,35 @@ public class BasicEnemy extends Enemy {
 		super.update(objects);
 		setPlayerDirection();
 		checkForPlayer();
-		if(seenPlayer) {
+		if(seenPlayer&&canSeePlayer) {
 			this.moveToPoint(playerLastPosition);
 			
 		}
+		else if(seenPlayer&&!canSeePlayer){
+			search();
+		}
+		else {
+			followPath();
+		}
 		checkCollisions();
 		
+	}
+	
+	private void search() {
+		if(!searching) {
+			this.searchTimer.schedule(new TimerTask() {
+				
+				@Override
+				public void run() {
+					seenPlayer = false;
+					searching = false;
+				}
+			}, 3000);
+			searching = true;
+		}
+		else {
+			moveToPoint(playerLastPosition);
+		}
 	}
 	
 	private void checkForPlayer(){
@@ -47,6 +69,8 @@ public class BasicEnemy extends Enemy {
 	}
 	
 	
+	
+	
 	private void checkCollisions() {
 		for(GameObject obj:objects) {
 			if(obj.id == ID.Wall) {
@@ -58,7 +82,15 @@ public class BasicEnemy extends Enemy {
 			else if(obj.id == ID.Player) {
 				Player player = (Player)obj;
 				if(this.isColliding(player)) {
-					Collision.resolveCollision(this, player);
+					objects.remove(player);
+				}
+			}
+			else if(obj.id == ID.Bullet) {
+				Bullet bullet = (Bullet)obj;
+				if(this.isColliding(bullet)) {
+					objects.remove(bullet);
+					objects.remove(this);
+					
 				}
 			}
 		}
@@ -67,10 +99,14 @@ public class BasicEnemy extends Enemy {
 
 	@Override
 	public void render(Graphics g) {
+		for(Point2D.Double point:this.path) {
+			g.setColor(Color.red);
+			g.drawRect((int)(point.getX()-5),(int)(point.getY()-5),10,10);
+		}
 		
 		Drawable vision = (graphics)->{
 			Color visionColor = new Color(0, 255, 0, 100);
-			if(canSeePlayer) {
+			if(seenPlayer) {
 				visionColor = new Color(255,0,0,100);
 			}
 			graphics.setColor(visionColor);

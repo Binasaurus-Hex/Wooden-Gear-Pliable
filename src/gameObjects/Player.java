@@ -2,8 +2,6 @@ package gameObjects;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.geom.AffineTransform;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.util.Timer;
@@ -22,6 +20,7 @@ public class Player extends RectangleObject {
 	private double baseAttackTime;
 	Timer timer;
 	private boolean canShoot;
+	public int ammo;
 	
 
 	public Player(double x, double y,double width,double height,Game game) {
@@ -35,12 +34,16 @@ public class Player extends RectangleObject {
 		timer = new Timer();
 		canShoot = true;
 		rotation = aimCircle.getRotation();
+		ammo = 6;
 		
 	}
 
 	@Override
 	public void update(CopyOnWriteArrayList<GameObject> objects) {
 		aimCircle.update(objects);
+		if(ammo<1) {
+			canShoot = false;
+		}
 		
 		checkCollisions(objects);
 		
@@ -78,6 +81,7 @@ public class Player extends RectangleObject {
 		double yVel = rotation.getY()*5;
 		Bullet bullet = new Bullet(xPos,yPos,xVel,yVel,game);
 		game.getHandler().add(bullet);
+		ammo--;
 	}
 	
 	private boolean checkCollisions(CopyOnWriteArrayList<GameObject> objects){
@@ -95,6 +99,12 @@ public class Player extends RectangleObject {
 				if(this.isColliding(enemy)) {
 					Collision.resolveCollision(this, enemy);
 					return true;
+				}
+			}
+			if(obj.id == ID.Goal) {
+				Goal goal = (Goal)obj;
+				if(this.isColliding(goal)) {
+					game.win();
 				}
 			}
 		}

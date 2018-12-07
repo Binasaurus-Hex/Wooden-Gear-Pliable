@@ -12,6 +12,7 @@ import gameObjects.GameObject;
 public class Camera extends GameObject{
 	private int vX,vY;
 	public boolean followPlayer = true;
+	public boolean debug = false;
 	
 
 	public Camera(double x, double y, double width, double height, ID id, Game game) {
@@ -19,6 +20,9 @@ public class Camera extends GameObject{
 		this.setVisible(true);
 		this.vX = 3;
 		this.vY = 3;
+		if(debug) {
+			followPlayer = false;
+		}
 	}
 
 	@Override
@@ -49,10 +53,19 @@ public class Camera extends GameObject{
 		AffineTransform at = new AffineTransform();
 		int xOffset = (int) (x);
 		int yOffset = (int) (y);
+		//remove -200 from x and +400 to y and set scale 1 for both x and y
+		if(debug) {
+			at.translate((game.getWindowWidth()/2)-xOffset-200,(game.getWindowHeight()/2)-yOffset+400);
+			at.scale(0.3, 0.3);
+			return at;
+		}
+		else {
+			at.translate((game.getWindowWidth()/2)-xOffset,(game.getWindowHeight()/2)-yOffset);
+			at.scale(1,1);
+			return at;
+		}
 		
-		at.translate((game.getWindowWidth()/2)-xOffset,(game.getWindowHeight()/2)-yOffset);
-		at.scale(1, 1);
-		return at;
+		
 		
 	}
 	

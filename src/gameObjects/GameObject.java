@@ -170,6 +170,14 @@ public abstract class GameObject {
 		action.draw(g2d);
 		g2d.setTransform(backup);
 	}
+	
+	protected void renderStatic(Graphics g,Drawable action) {
+		Graphics2D g2d = (Graphics2D)g;
+		AffineTransform original = g2d.getTransform();
+		g2d.translate(game.camera.getX()-(game.getWindowWidth()/2), game.camera.getY()-(game.getWindowHeight()/2));
+		action.draw(g2d);
+		g2d.transform(original);
+	}
 	//updates the object(all logic code goes here)
 	public abstract void update(CopyOnWriteArrayList<GameObject> objects);
 	//renders the object onto the screen

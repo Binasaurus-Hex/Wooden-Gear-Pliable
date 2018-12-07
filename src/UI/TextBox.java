@@ -3,18 +3,14 @@ package UI;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.util.ArrayList;
-import java.util.concurrent.CopyOnWriteArrayList;
-
 import game.Game;
-import game.ID;
-import gameObjects.GameObject;
 
 public class TextBox{
 	private ArrayList<String> lines;
 	private boolean centred = true;
 	private double x,y;
+	@SuppressWarnings("unused")
 	private double width,height;
 	private Game game;
 	private Font font;

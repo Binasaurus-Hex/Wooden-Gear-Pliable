@@ -4,9 +4,8 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
-import java.util.Scanner;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import gameObjects.Camera;
@@ -32,12 +31,10 @@ public class Game extends Canvas implements Runnable{
 	public Sound gameMusic;
 	public Sound menuMusic;
 	public Sound winSound;
-	public int score = 0;
-	public boolean musicOn = false;
+	public boolean musicOn = true;
 	public Camera camera;
 	public Key key;
 	public Cursor cursor;
-	public int tick;
 	
 	public Game(){
 		
@@ -189,12 +186,6 @@ public class Game extends Canvas implements Runnable{
 	 * updates the game differenly depending on game state
 	 */
 	private void update(){
-		if(tick>=60){
-			tick = 0;
-		}
-		else{
-			tick++;
-		}
 		switch(currentState){
 		case Game:
 			//main game update
@@ -307,12 +298,10 @@ public class Game extends Canvas implements Runnable{
 	
 	public void win() {
 		winSound.play();
-		score = 0;
 		currentState = GameState.Win;
 	}
 	
 	public void lose() {
-		score = 0;
 		currentState = GameState.Lose;
 	}
 	
@@ -323,7 +312,6 @@ public class Game extends Canvas implements Runnable{
 	}
 	
 	public void reset(){
-		score = 0;
 		handler.setObjects(initObjects());
 	}
 	

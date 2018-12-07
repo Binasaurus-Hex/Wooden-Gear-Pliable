@@ -1,12 +1,10 @@
 package gameObjects;
 
-import java.awt.Point;
-import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.Point2D.Double;
+import java.util.Timer;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import Physics.Collision;
 import Physics.MathsMethods;
 import game.Game;
 import game.ID;
@@ -18,13 +16,22 @@ public abstract class Enemy extends RectangleObject{
 	protected Point2D.Double playerLastPosition;
 	protected CopyOnWriteArrayList<GameObject> objects;
 	protected boolean seenPlayer = false;
-	protected boolean onPath;
+	protected boolean onPath = true;
+	protected boolean searching = false;
+	protected PathList path;
+	protected Timer searchTimer;
+	private Point2D.Double nextPoint;
+	private Point2D.Double currentPos;
 	
 
-	public Enemy(double x, double y,double width,double height,ID id, Game game) {
+	public Enemy(double x, double y,double width,double height,ID id, Game game,PathList path) {
 		super(x, y,width,height, 1, id, game);
 		playerDirection = new Point2D.Double();
 		playerLastPosition = new Point2D.Double();
+		this.searchTimer = new Timer();
+		this.nextPoint = path.nextPoint;
+		currentPos = new Point2D.Double();
+		this.path = path;
 	}
 	
 	protected boolean canSeePlayer() {
@@ -61,6 +68,18 @@ public abstract class Enemy extends RectangleObject{
 			e.printStackTrace();
 			return null;
 		}
+	}
+	
+	
+	protected void followPath() {
+		currentPos.setLocation(x, y);
+		if(path.hasReachedNext(currentPos)) {
+			nextPoint = path.getNextPoint();
+		}
+		else {
+			moveToPoint(nextPoint);
+		}
+		
 	}
 	
 	private boolean isSightClear(){
@@ -125,6 +144,16 @@ public abstract class Enemy extends RectangleObject{
 		Exception e = new Exception("player not found");
 		throw e;
 	}
+
+	public PathList getPath() {
+		return path;
+	}
+
+	public void setPath(PathList path) {
+		this.path = path;
+	}
+	
+	
 	
 	
 

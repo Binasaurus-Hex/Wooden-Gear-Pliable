@@ -22,16 +22,22 @@ public class WinMenuCreator {
 	
 	private CopyOnWriteArrayList<GameObject> getButtons() {
 		 CopyOnWriteArrayList<GameObject> buttons = new CopyOnWriteArrayList<GameObject>();
-		 
-		 buttons.add(new MenuButton(500,450,300,100,MenuID.PlayAgain,game));
+		 int menuWidth = 300;
+		 int menuHeight = 100;
+		 int middleX = (int)((game.getWindowWidth()/2)-(menuWidth/2));
+		 int middleY = (int)((game.getWindowHeight()/2)-(menuHeight/2));
+		 buttons.add(new MenuButton(middleX,middleY+100,menuWidth,menuHeight,MenuID.PlayAgain,game));
 		 
 		 return buttons;
 	}
 	
 	private  CopyOnWriteArrayList<GameObject> getLabels() {
 		CopyOnWriteArrayList<GameObject> labels = new CopyOnWriteArrayList<GameObject>();
-		
-		MenuLabel win = new MenuLabel(400,300,500,100,MenuID.Label,game);
+		int menuWidth = 500;
+		int menuHeight = 100;
+		int middleX = (int)((game.getWindowWidth()/2)-(menuWidth/2));
+		int middleY = (int)((game.getWindowHeight()/2)-(menuHeight/2));
+		MenuLabel win = new MenuLabel(middleX,middleY-50,menuWidth,menuHeight,MenuID.Label,game);
 		win.setFontSize(40);
 		win.addLine("You Win");
 		labels.add(win);
