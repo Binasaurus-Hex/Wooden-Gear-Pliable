@@ -36,15 +36,15 @@ public class Player extends RectangleObject {
 		this.vY = 0.9;
 		aimCircle = new AimCircle(x,y,600,ID.AimCircle,game,this);
 		ImageLoader loader = new ImageLoader();
-		sprite1 = loader.loadImage("/spy1.png");
-		sprite2 = loader.loadImage("/spy2.png");
+		sprite1 = loader.loadImage("/sprites/player/spy1.png");
+		sprite2 = loader.loadImage("/sprites/player/spy2.png");
 		baseAttackTime = 200;
 		timer = new Timer();
 		canShoot = true;
 		rotation = aimCircle.getRotation();
 		ammo = clipSize;
-		shoot = new Sound("/gunSilencer.wav");
-		empty = new Sound("/gunEmpty.wav");
+		shoot = new Sound("/sounds/effects/player/gunSilencer.wav");
+		empty = new Sound("/sounds/effects/player/gunEmpty.wav");
 		
 	}
 
@@ -69,7 +69,7 @@ public class Player extends RectangleObject {
 		if(game.key.isKeyDown("D")){
 			x+=vX;
 		}
-		if(game.cursor.isDown()&&canShoot&&reset){
+		if(game.mouse.isDown()&&canShoot&&reset){
 			shootBullet();
 			canShoot = false;
 			timer.schedule(new TimerTask(){
@@ -81,10 +81,10 @@ public class Player extends RectangleObject {
 				}
 			}, (long) baseAttackTime);
 		}
-		if(game.cursor.isDown()&&ammo<1){
+		if(game.mouse.isDown()&&ammo<1){
 			if(!empty.isPlaying())empty.play();
 		}
-		if(!game.cursor.isDown()){
+		if(!game.mouse.isDown()){
 			reset = true;
 			empty.stop();
 		}

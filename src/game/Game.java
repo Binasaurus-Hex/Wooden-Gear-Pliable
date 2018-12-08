@@ -2,6 +2,7 @@ package game;
 
 import java.awt.Canvas;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -23,7 +24,7 @@ public class Game extends Canvas implements Runnable{
 	private Handler pauseMenuHandler;
 	private Handler controlMenuHandler;
 	private Handler winMenuHandler;
-	private String name = "SexLine Sanfrancisco";
+	private String name = "Wooden Gear Pliable";
 	private Thread thread;
 	private boolean running = false;
 	public GameState currentState;
@@ -34,18 +35,21 @@ public class Game extends Canvas implements Runnable{
 	public boolean musicOn = true;
 	public Camera camera;
 	public Key key;
-	public Cursor cursor;
+	public Mouse mouse;
 	private int score;
 	private ScoreCalculator scoreCalculator;
 	
 	public Game(){
+		LeaderBoard scores = new LeaderBoard();
+		Cursor cursor = new Cursor(Cursor.CROSSHAIR_CURSOR);
+		this.setCursor(cursor);
 		scoreCalculator = new ScoreCalculator(this);
 		key = new Key();
-		cursor = new Cursor();
+		mouse = new Mouse();
 		//initializing the main game music
-		gameMusic = new Sound("/nick game loop.wav");
-		menuMusic = new Sound("/Music.wav");
-		winSound = new Sound("/tuturu.wav");
+		gameMusic = new Sound("/sounds/music/nick game loop.wav");
+		menuMusic = new Sound("/sounds/music/Music.wav");
+		winSound = new Sound("/sounds/effects/other/tuturu.wav");
 		
 		//initialising the default state of the game 
 		currentState = GameState.MainMenu;
@@ -314,6 +318,7 @@ public class Game extends Canvas implements Runnable{
 	}
 	
 	public void reset(){
+		scoreCalculator.reset();
 		handler.setObjects(initObjects());
 	}
 	

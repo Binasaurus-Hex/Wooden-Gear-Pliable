@@ -12,6 +12,7 @@ import game.Drawable;
 import game.Game;
 import game.ID;
 import game.ImageLoader;
+import game.Sound;
 
 public class BasicEnemy extends Enemy {
 	
@@ -26,8 +27,8 @@ public class BasicEnemy extends Enemy {
 		vX = 0.5;
 		vY = 0.5;
 		ImageLoader loader = new ImageLoader();
-		sprite1 = loader.loadImage("/robot1.png");
-		sprite2 = loader.loadImage("/robot2.png");
+		sprite1 = loader.loadImage("/sprites/enemy/robot1.png");
+		sprite2 = loader.loadImage("/sprites/enemy/robot2.png");
 		currentSprite = sprite1;
 	}
 

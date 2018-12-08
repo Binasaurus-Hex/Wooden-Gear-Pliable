@@ -20,7 +20,7 @@ public class MouseInput extends MouseAdapter {
 		switch(game.currentState){
 		
 		case Game:
-			game.cursor.setDown(true);
+			game.mouse.setDown(true);
 			break;
 		
 		case MainMenu:
@@ -53,8 +53,8 @@ public class MouseInput extends MouseAdapter {
 		switch(game.currentState){
 		
 		case Game:
-			game.cursor.setX(e.getX());
-			game.cursor.setY(e.getY());
+			game.mouse.setX(e.getX());
+			game.mouse.setY(e.getY());
 			break;
 			
 		case MainMenu:
@@ -85,8 +85,8 @@ public class MouseInput extends MouseAdapter {
 	public void mouseDragged(MouseEvent e) {
 		switch(game.currentState){
 		case Game:
-			game.cursor.setX(e.getX());
-			game.cursor.setY(e.getY());
+			game.mouse.setX(e.getX());
+			game.mouse.setY(e.getY());
 			break;
 		case MainMenu:
 			break;
@@ -101,7 +101,7 @@ public class MouseInput extends MouseAdapter {
 	public void mouseReleased(MouseEvent e) {
 		switch(game.currentState){
 		case Game:
-			game.cursor.setDown(false);
+			game.mouse.setDown(false);
 			//TODO
 			break;
 		case MainMenu:

@@ -5,20 +5,20 @@ import java.awt.Graphics;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import Physics.MathsMethods;
-import game.Cursor;
+import game.Mouse;
 import game.Game;
 import game.ID;
 
 public class AimCircle extends CircleObject {
 	private Player player;
 	private Camera camera;
-	private Cursor cursor;
+	private Mouse cursor;
 
 	public AimCircle(double x, double y, double radius,ID id, Game game,Player player) {
 		super(x, y, radius, 1, id, game);
 		this.player = player;
 		camera = game.camera;
-		cursor = game.cursor;
+		cursor = game.mouse;
 		
 	}
 
