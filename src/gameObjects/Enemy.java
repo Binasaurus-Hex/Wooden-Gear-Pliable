@@ -104,7 +104,6 @@ public abstract class Enemy extends RectangleObject{
 			}
 			return true;
 		} catch (Exception e) {
-			e.printStackTrace();
 			return false;
 		}
 		
@@ -114,24 +113,17 @@ public abstract class Enemy extends RectangleObject{
 		this.objects = objects;
 	}
 	
-	protected void setLastPlayerPosition() {
-		try {
-			Player player = this.getPlayer();
-			playerLastPosition.setLocation(player.getX(), player.getY());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	protected void setLastPlayerPosition() throws Exception {
+		Player player = this.getPlayer();
+		playerLastPosition.setLocation(player.getX(), player.getY());
 	}
 	
-	protected void setPlayerDirection() {
-		try {
-			Player player = getPlayer();
-			double pX = player.getX();
-			double pY = player.getY();
-			playerDirection.setLocation(pX-x, pY-y);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	protected void setPlayerDirection() throws Exception {
+		Player player = getPlayer();
+		double pX = player.getX();
+		double pY = player.getY();
+		playerDirection.setLocation(pX-x, pY-y);
+		
 	}
 	
 	private Player getPlayer() throws Exception{

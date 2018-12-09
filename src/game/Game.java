@@ -9,6 +9,8 @@ import java.awt.RenderingHints;
 import java.awt.image.BufferStrategy;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import UI.LeaderBoard;
+import UI.MenuID;
 import gameObjects.Camera;
 import gameObjects.GameObject;
 
@@ -38,9 +40,10 @@ public class Game extends Canvas implements Runnable{
 	public Mouse mouse;
 	private int score;
 	private ScoreCalculator scoreCalculator;
+	public LeaderBoard leaderBoard;
 	
 	public Game(){
-		LeaderBoard scores = new LeaderBoard();
+		leaderBoard = new LeaderBoard(100,100,100,100,MenuID.Label,this);
 		Cursor cursor = new Cursor(Cursor.CROSSHAIR_CURSOR);
 		this.setCursor(cursor);
 		scoreCalculator = new ScoreCalculator(this);

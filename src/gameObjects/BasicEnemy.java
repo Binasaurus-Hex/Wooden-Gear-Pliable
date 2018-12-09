@@ -36,7 +36,14 @@ public class BasicEnemy extends Enemy {
 	public void update(CopyOnWriteArrayList<GameObject> objects) {
 		super.update(objects);
 		updateSprite();
-		setPlayerDirection();
+		try {
+			setPlayerDirection();
+		} catch (Exception e) {
+			vX = 0.5;
+			vY = 0.5;
+			followPath();
+			return;
+		}
 		checkForPlayer();
 		if(seenPlayer&&canSeePlayer) {
 			this.vX = 1.5;
@@ -88,7 +95,12 @@ public class BasicEnemy extends Enemy {
 		if(canSeePlayer()) {
 			canSeePlayer = true;
 			seenPlayer = true;
-			setLastPlayerPosition();
+			try {
+				setLastPlayerPosition();
+			} catch (Exception e) {
+				canSeePlayer = false;
+				seenPlayer = false;
+			}
 		}
 		else{
 			canSeePlayer = false;
@@ -153,7 +165,6 @@ public class BasicEnemy extends Enemy {
 		
 		renderRotated(g,vision);
 		renderRotated(g,enemy);
-
 	}
 
 }

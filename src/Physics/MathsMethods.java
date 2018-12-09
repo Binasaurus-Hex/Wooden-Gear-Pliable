@@ -11,7 +11,7 @@ public class MathsMethods {
 	// Newton's Gravitational Constant
 	private static final double G = 6.67 * pow(10,-11);
 	
-	/*
+	/**
 	 * Get the gravitational force between two objects
 	 * F = (G * m1 * m2) / (r * r), with r being the distance between the two objects
 	 * @param M The first mass

@@ -3,6 +3,8 @@ package game;
 import java.awt.geom.Point2D;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import UI.LeaderBoard;
+import UI.MenuID;
 import gameObjects.BasicEnemy;
 import gameObjects.Camera;
 import gameObjects.Floor;

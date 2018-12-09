@@ -88,6 +88,10 @@ public class TextBox{
 		
 	}
 	
+	public void clear(){
+		lines.clear();
+	}
+	
 	public void render(Graphics g) {
 		g.setFont(font);
 		if(centred){
