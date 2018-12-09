@@ -20,7 +20,7 @@ import gameObjects.GameObject;
 public class LeaderBoard extends UI_Object{
 	private File scoreFile;
 	private ArrayList<User> users;
-	private Font font = new Font("Impact",Font.PLAIN,30);
+	private Font font = Game.menuFontMedium;
 
 	/**
 	 * defualt constructor for leaderBoard UI object
@@ -85,19 +85,25 @@ public class LeaderBoard extends UI_Object{
 	 * @param String name
 	 */
 	public void addScore(String name,Integer score){
+		boolean newUser = true;
 		for(User user:users){
 			if(user.getName().equals(name)){
+				newUser = false;
 				if(score>user.getScore()){
+					System.out.println("added score");
 					user.setScore(score);
-					return;
-				}
-				else{
-					return;
 				}
 			}
 		}
-		users.add(new User(name,score));
+		if(newUser){
+			users.add(new User(name,score));
+		}
 		orderList();
+		try {
+			saveScores();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	private void orderList(){
@@ -136,7 +142,8 @@ public class LeaderBoard extends UI_Object{
 	@Override
 	public void render(Graphics g) {
 		g.setColor(Color.blue);
-		//g.fillRect((int)(x-halfWidth),(int)(y-halfHeight),(int)width,(int)height);
+		g.fillRect((int)(x),(int)(y-50),(int)width,(int)height);
+		g.setColor(Color.white);
 		text.render(g);
 		
 		

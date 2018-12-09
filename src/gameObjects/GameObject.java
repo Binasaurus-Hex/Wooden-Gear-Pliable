@@ -2,6 +2,7 @@ package gameObjects;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Point2D;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -173,6 +174,7 @@ public abstract class GameObject {
 	
 	protected void renderStatic(Graphics g,Drawable action) {
 		Graphics2D g2d = (Graphics2D)g;
+		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
 		AffineTransform original = g2d.getTransform();
 		g2d.translate(game.camera.getX()-(game.getWindowWidth()/2), game.camera.getY()-(game.getWindowHeight()/2));
 		action.draw(g2d);

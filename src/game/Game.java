@@ -3,10 +3,16 @@ package game;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferStrategy;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import UI.LeaderBoard;
@@ -26,6 +32,7 @@ public class Game extends Canvas implements Runnable{
 	private Handler pauseMenuHandler;
 	private Handler controlMenuHandler;
 	private Handler winMenuHandler;
+	private Handler scoreMenuHandler;
 	private String name = "Wooden Gear Pliable";
 	private Thread thread;
 	private boolean running = false;
@@ -41,21 +48,34 @@ public class Game extends Canvas implements Runnable{
 	private int score;
 	private ScoreCalculator scoreCalculator;
 	public LeaderBoard leaderBoard;
+	public static Font titleFont;
+	public static Font menuFont;
+	public static Font menuFontSmall;
+	public static Font menuFontMedium;
 	
 	public Game(){
-		leaderBoard = new LeaderBoard(100,100,100,100,MenuID.Label,this);
+		
+		
+		//setting the look of the mouse cursor to a crosshair
 		Cursor cursor = new Cursor(Cursor.CROSSHAIR_CURSOR);
 		this.setCursor(cursor);
+		
+		//initialising the scoreCalculation, key object and mouse object
 		scoreCalculator = new ScoreCalculator(this);
 		key = new Key();
 		mouse = new Mouse();
+		
 		//initializing the main game music
 		gameMusic = new Sound("/sounds/music/nick game loop.wav");
 		menuMusic = new Sound("/sounds/music/Music.wav");
 		winSound = new Sound("/sounds/effects/other/tuturu.wav");
 		
+		//setting fonts
+		setFonts();
+		
 		//initialising the default state of the game 
 		currentState = GameState.MainMenu;
+		
 		
 		//initialising the window
 		window = new Window(windowWidth,windowHeight,this,name);
@@ -67,6 +87,11 @@ public class Game extends Canvas implements Runnable{
 		
 		//handler for objects in the snooker 'world'
 		handler = new Handler(initObjects());
+		
+		//handler for scoreBoard objects
+		ScoreBoardCreator scoreMenu = new ScoreBoardCreator(this);
+		scoreMenuHandler = new Handler(scoreMenu.getObjects());
+		leaderBoard = scoreMenu.getLeaderBoard();
 		
 		//handler for main menu objects
 		MainMenuCreator mainMenu = new MainMenuCreator(this);
@@ -142,7 +167,18 @@ public class Game extends Canvas implements Runnable{
 		this.winMenuHandler = winMenuHandler;
 	}
 	
-	
+	public Handler getScoreMenuHandler() {
+		return scoreMenuHandler;
+	}
+
+	public void setScoreMenuHandler(Handler scoreMenuHandler) {
+		this.scoreMenuHandler = scoreMenuHandler;
+	}
+
+	/**
+	 * gets the current fps of the game
+	 * @return int fps
+	 */
 	public int getFps() {
 		return fps;
 	}
@@ -176,12 +212,18 @@ public class Game extends Canvas implements Runnable{
 		stop();
 	}
 	
+	/**
+	 * starts the game 
+	 */
 	public synchronized void start(){
 		running = true;
 		thread = new Thread(this);
 		thread.run();	
 	}
 	
+	/**
+	 * stops the game
+	 */
 	public synchronized void stop(){
 		running = false;
 		try {
@@ -221,9 +263,16 @@ public class Game extends Canvas implements Runnable{
 		case Settings:
 			break;
 		case Win:
+			leaderBoard.addScore("Nick", score);
 			winMenuHandler.update();
+		case Lose:
+			break;
+		case ScoreBoard:
+			scoreMenuHandler.update();
+			break;
 		default:
 			break;
+		
 		}
 		
 		
@@ -233,25 +282,27 @@ public class Game extends Canvas implements Runnable{
 	 * renders the game
 	 */
 	private void render(){
+		//if the buffer hasnt been created yet, create it
 		if(this.getBufferStrategy()==null){
 			this.createBufferStrategy(3);
 		}
 		else{
+			//once buffer has been created get the graphics
 			BufferStrategy buffer = this.getBufferStrategy();
 			Graphics g = buffer.getDrawGraphics();
 			
-			//sets a black background
+			//sets a dark grey background
 			g.setColor(Color.DARK_GRAY);
 			g.fillRect(0, 0, windowWidth, windowHeight);
 			switch(currentState){
+			//renders for the different states of the game
 			case Game:
 				handler.render(g);
 				break;
 			case PauseMenu:
+				//puts a transparent filter over the game and renders the pause menu ontop
 				handler.render(g);
-				
 				Graphics2D g2d = (Graphics2D)g;
-				
 				g2d.translate(camera.getX()-(windowWidth/2),camera.getY()-(windowHeight/2));
 				Color fade = new Color(0, 0, 0, 150);
 				g2d.setColor(fade);
@@ -274,8 +325,12 @@ public class Game extends Canvas implements Runnable{
 				Graphics2D g2d2 = (Graphics2D)g;
 				g2d2.translate(camera.getX()-(windowWidth/2),camera.getY()-(windowHeight/2));
 				winMenuHandler.render(g2d2);
-				
-			default :
+			case Lose:
+				break;
+			case ScoreBoard:
+				scoreMenuHandler.render(g);
+				break;
+			default:
 				break;
 			}
 			
@@ -285,55 +340,124 @@ public class Game extends Canvas implements Runnable{
 	}
 	
 	//control for game states
+	
+	/**
+	 * pauses the game
+	 */
 	public void pause(){
 		currentState = GameState.PauseMenu;
 	}
 	
+	/**
+	 * plays/resumes the game
+	 */
 	public void play(){
 		currentState = GameState.Game;
 	}
 	
+	/**
+	 * sets the game state to the main menu
+	 */
 	public void menu(){
 		currentState = GameState.MainMenu;
 	}
 	
+	/**
+	 * sets the game state to the settings menu
+	 */
 	public void settings(){
 		currentState = GameState.Settings;
 	}
 	
+	/**
+	 * sets the game state to the controls menu
+	 */
 	public void controls(){
 		currentState = GameState.Controls;
 	}
 	
+	/**
+	 * sets the game state to a win state
+	 */
 	public void win() {
 		winSound.play();
 		currentState = GameState.Win;
 	}
 	
+	/**
+	 * sets the game state to a lose state
+	 */
 	public void lose() {
 		currentState = GameState.Lose;
 	}
 	
+	/**
+	 * sets the game state to the scoreboard menu
+	 */
+	public void scoreBoard(){
+		currentState = GameState.ScoreBoard;
+	}
+	
+	/**
+	 * gets a list of the game objects for the main game
+	 * @return CopyOnWriteArrayList<GameObject> objects
+	 */
 	private CopyOnWriteArrayList<GameObject> initObjects(){
 		ObjectCreator objectCreator = new ObjectCreator(this);
 		CopyOnWriteArrayList<GameObject> objects = objectCreator.getObjects();
 		return objects;
 	}
 	
+	/**
+	 * intialises the static fonts of the game 
+	 */
+	private void setFonts(){
+		try {
+			titleFont = Font.createFont(Font.TRUETYPE_FONT,new FileInputStream(new File("res/font/METAG___.TTF"))).deriveFont(Font.PLAIN, 60);
+			menuFont = Font.createFont(Font.TRUETYPE_FONT,new FileInputStream(new File("res/font/MGS2.ttf"))).deriveFont(Font.PLAIN, 40);
+			menuFontSmall = Font.createFont(Font.TRUETYPE_FONT,new FileInputStream(new File("res/font/MGS2.ttf"))).deriveFont(Font.PLAIN, 25);
+			menuFontMedium = Font.createFont(Font.TRUETYPE_FONT,new FileInputStream(new File("res/font/MGS2.ttf"))).deriveFont(Font.PLAIN, 30);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * resets the objects of the main game back to their original positions and states
+	 */
 	public void reset(){
 		scoreCalculator.reset();
 		handler.setObjects(initObjects());
 	}
 	
+	/**
+	 * main method of the game
+	 * @param a
+	 */
 	public static void main(String[] a){
 		Game game = new Game();
 		game.start();
 	}
 
+	/**
+	 * gets the current score of the game
+	 * @return int score
+	 */
 	public int getScore() {
 		return score;
 	}
 
+	/**
+	 * set the score of the game to the inputed value
+	 * @param score
+	 */
 	public void setScore(int score) {
 		this.score = score;
 	}

@@ -3,6 +3,8 @@ package UI;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.util.ArrayList;
 import game.Game;
 
@@ -93,15 +95,16 @@ public class TextBox{
 	}
 	
 	public void render(Graphics g) {
-		g.setFont(font);
+		Graphics2D g2d = (Graphics2D)g;
+		g2d.setFont(font);
 		if(centred){
 			for(int line = 0;line<lines.size();line++){
 				String text = lines.get(line);
 				double lineHalfWidth = getTextWidth(text,g)/2;
 				int lineX = (int)(x-lineHalfWidth);
 				int lineY = (int)(y-(height/2)+((line+1)*font.getSize()));
-				//g.drawRect((int)(x-(width/2)), (int)(y-(height/2)), (int)width, (int)height);
-				g.drawString(text, lineX, lineY);
+				g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
+				g2d.drawString(text, lineX, lineY);
 			}
 		}
 		

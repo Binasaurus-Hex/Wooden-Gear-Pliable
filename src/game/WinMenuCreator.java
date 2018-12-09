@@ -37,8 +37,7 @@ public class WinMenuCreator {
 		int menuHeight = 100;
 		int middleX = (int)((game.getWindowWidth()/2)-(menuWidth/2));
 		int middleY = (int)((game.getWindowHeight()/2)-(menuHeight/2));
-		MenuLabel win = new MenuLabel(middleX,middleY-50,menuWidth,menuHeight,MenuID.Label,game);
-		win.setFontSize(40);
+		MenuLabel win = new MenuLabel(middleX,middleY-50,menuWidth,menuHeight,MenuID.Label,game,Game.titleFont);
 		win.addLine("You Win");
 		labels.add(win);
 		

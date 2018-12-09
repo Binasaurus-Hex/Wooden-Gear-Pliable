@@ -42,6 +42,12 @@ public class MouseInput extends MouseAdapter {
 		case Win:
 			CopyOnWriteArrayList<GameObject> winMenuObjects = game.getWinMenuHandler().getObjects();
 			menuClicked(winMenuObjects,mouse);
+		case Lose:
+			break;
+		case ScoreBoard:
+			CopyOnWriteArrayList<GameObject> scoreMenuObjects = game.getScoreMenuHandler().getObjects();
+			menuClicked(scoreMenuObjects,mouse);
+			break;
 		default:
 			break;
 		}
@@ -76,8 +82,15 @@ public class MouseInput extends MouseAdapter {
 		case Win:
 			CopyOnWriteArrayList<GameObject> winMenuObjects = game.getWinMenuHandler().getObjects();
 			menuMoved(winMenuObjects,mouse);
+		case Lose:
+			break;
+		case ScoreBoard:
+			CopyOnWriteArrayList<GameObject> scoreMenuObjects = game.getScoreMenuHandler().getObjects();
+			menuMoved(scoreMenuObjects,mouse);
+			break;
 		default:
 			break;
+		
 		}
 	}
 	
@@ -87,10 +100,6 @@ public class MouseInput extends MouseAdapter {
 		case Game:
 			game.mouse.setX(e.getX());
 			game.mouse.setY(e.getY());
-			break;
-		case MainMenu:
-			break;
-		case PauseMenu:
 			break;
 		default:
 			break;
@@ -102,11 +111,6 @@ public class MouseInput extends MouseAdapter {
 		switch(game.currentState){
 		case Game:
 			game.mouse.setDown(false);
-			//TODO
-			break;
-		case MainMenu:
-			break;
-		case PauseMenu:
 			break;
 		default:
 			break;

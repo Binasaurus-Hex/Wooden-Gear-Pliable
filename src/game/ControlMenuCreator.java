@@ -40,17 +40,16 @@ public class ControlMenuCreator {
 		int middleX = (int)((game.getWindowWidth()/2)-(menuWidth/2));
 		int middleY = (int)((game.getWindowHeight()/2)-(menuHeight/2));
 		
-		MenuLabel controlsTitle = new MenuLabel(middleX,middleY-200,400,100,MenuID.Label,game);
+		MenuLabel controlsTitle = new MenuLabel(middleX,middleY-200,400,100,MenuID.Label,game,Game.menuFont);
 		controlsTitle.addLine("Controls");
 		labels.add(controlsTitle);
 		
-		MenuLabel controls = new MenuLabel(middleX,middleY-100,400,100,MenuID.Label,game);
-		controls.setFontSize(20);
-		controls.addText("M = switch between 'snooker' and 'grab' modes \n"
-				+ "B = resets all balls to start positions \n"
-				+ "ESC = main menu \n"
-				+ "P = pause menu\n"
-				+ "O = music on/off");
+		MenuLabel controls = new MenuLabel(middleX,middleY-100,400,100,MenuID.Label,game,Game.menuFontSmall);
+		controls.addText("M : switch between 'snooker' and 'grab' modes \n"
+				+ "B : resets all balls to start positions \n"
+				+ "ESC : main menu \n"
+				+ "P : pause menu\n"
+				+ "O : music on/off");
 		
 		labels.add(controls);
 		return labels;

@@ -1,3 +1,4 @@
+Nick:14563
 Dom:3000
 Bob:2000
 Charles:1600
@@ -5,7 +6,6 @@ Bob:1500
 Bart:1000
 Callum:500
 Alina:400
-Nick:400
 Dick:100
 Peter:90
 Mark:88

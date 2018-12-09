@@ -13,7 +13,8 @@ public enum MenuID {
 	PlayAgain("Play Again",(game)->{
 		game.reset();
 		game.play();
-		});
+		}),
+	ScoreBoard("ScoreBoard",(game)->game.scoreBoard());
 	
 	private String name;
 	private Activatable behaviour;

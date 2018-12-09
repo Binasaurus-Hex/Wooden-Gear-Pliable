@@ -9,12 +9,17 @@ import game.Game;
 import gameObjects.GameObject;
 
 public class MenuLabel extends UI_Object {
-	Font font = new Font("Impact",Font.PLAIN,30);
+	//Font font = new Font("Impact",Font.PLAIN,30);
+	Font font;
+	public Color foreground;
+	public Color background;
 
-	public MenuLabel(double x, double y, double width, double height,MenuID menuID, Game game) {
+	public MenuLabel(double x, double y, double width, double height,MenuID menuID, Game game,Font font) {
 		super(x, y, width, height, menuID, game);
+		this.font = font;
 		text = new TextBox((x+halfWidth),(y+halfHeight),font,game);
-		
+		foreground = Color.white;
+		background = Color.blue;
 	}
 
 	@Override
@@ -24,16 +29,15 @@ public class MenuLabel extends UI_Object {
 
 	@Override
 	public void render(Graphics g) {
-		g.setColor(Color.blue);
+		g.setColor(background);
 		g.fillRect((int)(x),(int)(y), (int)width, (int)height);
-		g.setColor(Color.white);
+		g.setColor(foreground);
 		text.render(g);
 		
 	}
 	
-	public void setFontSize(int size){
-		Font font = new Font("Impact",Font.PLAIN,size);
-		text = new TextBox((x+halfWidth),(y+halfHeight),font,game);
+	public void setFont(Font font){
+		this.font = font;
 	}
 	
 	public void addText(String block){

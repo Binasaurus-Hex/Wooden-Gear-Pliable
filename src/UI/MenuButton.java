@@ -9,7 +9,8 @@ import game.Game;
 import gameObjects.GameObject;
 
 public class MenuButton extends UI_Object {
-	Font font = new Font("Impact",Font.PLAIN,30);
+	//Font font = new Font("Impact",Font.PLAIN,30);
+	Font font = Game.menuFont;
 
 	public MenuButton(double x, double y, double width, double height,MenuID menuID, Game game) {
 		super(x, y, width, height, menuID, game);
