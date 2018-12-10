@@ -5,6 +5,7 @@ import java.util.Map;
 
 public class Key {
 	private Map<String,Boolean> keys;
+	public String currentKey;
 
 	public Key() {
 		keys = new HashMap<String,Boolean>();

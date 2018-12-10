@@ -24,8 +24,8 @@ public class BasicEnemy extends Enemy {
 	public BasicEnemy(double x, double y, double width,double height,Game game,PathList path) {
 		super(x, y, width,height,ID.BasicEnemy, game,path);
 		this.rotation = new Point2D.Double(1,0);
-		vX = 0.5;
-		vY = 0.5;
+		vX = 0.6;
+		vY = 0.6;
 		ImageLoader loader = new ImageLoader();
 		sprite1 = loader.loadImage("/sprites/enemy/robot1.png");
 		sprite2 = loader.loadImage("/sprites/enemy/robot2.png");
@@ -39,8 +39,8 @@ public class BasicEnemy extends Enemy {
 		try {
 			setPlayerDirection();
 		} catch (Exception e) {
-			vX = 0.5;
-			vY = 0.5;
+			vX = 0.6;
+			vY = 0.6;
 			followPath();
 			return;
 		}

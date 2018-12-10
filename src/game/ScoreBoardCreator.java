@@ -10,16 +10,14 @@ import gameObjects.GameObject;
 public class ScoreBoardCreator {
 
 	private Game game;
-	private LeaderBoard leaderBoard;
 	public ScoreBoardCreator(Game game){
 		this.game = game;
-		this.leaderBoard = getNewScoreBoard();
 	}
 	
 	public CopyOnWriteArrayList<GameObject> getObjects(){
 		CopyOnWriteArrayList<GameObject> menuObjects = new CopyOnWriteArrayList<GameObject>();
 		menuObjects.addAll(getButtons());
-		menuObjects.add(leaderBoard);
+		menuObjects.add(game.leaderBoard);
 		
 		return menuObjects;
 	}
@@ -41,10 +39,6 @@ public class ScoreBoardCreator {
 		int middleX = (int)((game.getWindowWidth()/2)-(menuWidth/2));
 		int middleY = (int)((game.getWindowHeight()/2)-(menuHeight/2));
 		return new LeaderBoard(middleX,middleY-100,menuWidth,menuHeight,MenuID.Label,game);
-	}
-	
-	public LeaderBoard getLeaderBoard(){
-		return this.leaderBoard;
 	}
 
 }

@@ -90,7 +90,6 @@ public class LeaderBoard extends UI_Object{
 			if(user.getName().equals(name)){
 				newUser = false;
 				if(score>user.getScore()){
-					System.out.println("added score");
 					user.setScore(score);
 				}
 			}
@@ -115,8 +114,14 @@ public class LeaderBoard extends UI_Object{
 	 * @return ArrayList<User> top10users
 	 */
 	public List<User> getTop10Users(){
-		List<User> top10 = users.subList(0, 10);
-		return top10;
+		if(users.size()<10){
+			return users;
+		}
+		else{
+			List<User> top10 = users.subList(0, 10);
+			return top10;
+		}
+		
 	}
 	
 	/**
@@ -136,6 +141,13 @@ public class LeaderBoard extends UI_Object{
 
 	@Override
 	public void update(CopyOnWriteArrayList<GameObject> objects) {
+		try {
+			loadScores();
+			System.out.println("loaded");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		text.update();
 	}
 

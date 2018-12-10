@@ -14,6 +14,10 @@ public class KeyInput extends KeyAdapter {
 	public void keyPressed(KeyEvent e) {
 		int keyCode = e.getKeyCode();
 		String key = KeyEvent.getKeyText(keyCode);
+		game.key.currentKey = key;
+		if(game.enteringText){
+			return;
+		}
 		switch(key){
 		//goes to menu
 		case "Escape":
@@ -63,6 +67,7 @@ public class KeyInput extends KeyAdapter {
 	public void keyReleased(KeyEvent e) {
 		int keyCode = e.getKeyCode();
 		String key = KeyEvent.getKeyText(keyCode);
+		game.key.currentKey = "";
 		switch(key){
 		case "I":
 			keys.setKeyUp(key);

@@ -43,7 +43,7 @@ public class MainMenuCreator {
 		int menuHeight = 100;
 		int middleX = (int)((game.getWindowWidth()/2)-(menuWidth/2));
 		int middleY = (int)((game.getWindowHeight()/2)-(menuHeight/2));
-		MenuLabel title = new MenuLabel(middleX,100,800,menuHeight,MenuID.Label,game,Game.titleFont);
+		MenuLabel title = new MenuLabel(middleX,50,800,menuHeight,MenuID.Label,game,Game.titleFont);
 		title.background = new Color(0,0,0,0);
 		title.addLine("Wooden Gear Pliable");
 		labels.add(title);

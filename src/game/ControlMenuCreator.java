@@ -28,7 +28,7 @@ public class ControlMenuCreator {
 		int middleX = (int)((game.getWindowWidth()/2)-(menuWidth/2));
 		int middleY = (int)((game.getWindowHeight()/2)-(menuHeight/2));
 		
-		buttons.add(new MenuButton(middleX,middleY+50,menuWidth,menuHeight,MenuID.Menu,game));
+		buttons.add(new MenuButton(middleX,middleY+200,menuWidth,menuHeight,MenuID.Menu,game));
 		
 		return buttons;
 	}
@@ -40,15 +40,18 @@ public class ControlMenuCreator {
 		int middleX = (int)((game.getWindowWidth()/2)-(menuWidth/2));
 		int middleY = (int)((game.getWindowHeight()/2)-(menuHeight/2));
 		
-		MenuLabel controlsTitle = new MenuLabel(middleX,middleY-200,400,100,MenuID.Label,game,Game.menuFont);
+		MenuLabel controlsTitle = new MenuLabel(middleX,middleY-450,400,100,MenuID.Label,game,Game.menuFont);
 		controlsTitle.addLine("Controls");
 		labels.add(controlsTitle);
 		
-		MenuLabel controls = new MenuLabel(middleX,middleY-100,400,100,MenuID.Label,game,Game.menuFontSmall);
-		controls.addText("M : switch between 'snooker' and 'grab' modes \n"
-				+ "B : resets all balls to start positions \n"
-				+ "ESC : main menu \n"
-				+ "P : pause menu\n"
+		MenuLabel controls = new MenuLabel(middleX,middleY-350,400,500,MenuID.Label,game,Game.menuFontMedium);
+		controls.addText("W : UP \n\n"
+				+ "A : LEFT \n\n"
+				+ "S : DOWN \n\n"
+				+ "D : RIGHT \n\n"
+				+ "Mouse : aim / shoot\n\n"
+				+ "ESC : main menu \n\n"
+				+ "P : pause menu\n\n"
 				+ "O : music on/off");
 		
 		labels.add(controls);

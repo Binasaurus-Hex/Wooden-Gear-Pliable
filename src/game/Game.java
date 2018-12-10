@@ -52,10 +52,10 @@ public class Game extends Canvas implements Runnable{
 	public static Font menuFont;
 	public static Font menuFontSmall;
 	public static Font menuFontMedium;
+	public boolean enteringText = false;
 	
 	public Game(){
-		
-		
+
 		//setting the look of the mouse cursor to a crosshair
 		Cursor cursor = new Cursor(Cursor.CROSSHAIR_CURSOR);
 		this.setCursor(cursor);
@@ -66,7 +66,7 @@ public class Game extends Canvas implements Runnable{
 		mouse = new Mouse();
 		
 		//initializing the main game music
-		gameMusic = new Sound("/sounds/music/nick game loop.wav");
+		gameMusic = new Sound("/sounds/music/Magic Sword - In The Face Of Evil.wav");
 		menuMusic = new Sound("/sounds/music/Music.wav");
 		winSound = new Sound("/sounds/effects/other/tuturu.wav");
 		
@@ -90,8 +90,8 @@ public class Game extends Canvas implements Runnable{
 		
 		//handler for scoreBoard objects
 		ScoreBoardCreator scoreMenu = new ScoreBoardCreator(this);
+		leaderBoard = scoreMenu.getNewScoreBoard();
 		scoreMenuHandler = new Handler(scoreMenu.getObjects());
-		leaderBoard = scoreMenu.getLeaderBoard();
 		
 		//handler for main menu objects
 		MainMenuCreator mainMenu = new MainMenuCreator(this);
@@ -263,7 +263,6 @@ public class Game extends Canvas implements Runnable{
 		case Settings:
 			break;
 		case Win:
-			leaderBoard.addScore("Nick", score);
 			winMenuHandler.update();
 		case Lose:
 			break;
@@ -319,9 +318,6 @@ public class Game extends Canvas implements Runnable{
 				break;
 			case Win:
 				handler.render(g);
-				Color fadewin = new Color(0, 255, 0, 150);
-				g.setColor(fadewin);
-				g.fillRect(0, 0, windowWidth, windowHeight);
 				Graphics2D g2d2 = (Graphics2D)g;
 				g2d2.translate(camera.getX()-(windowWidth/2),camera.getY()-(windowHeight/2));
 				winMenuHandler.render(g2d2);
@@ -380,7 +376,6 @@ public class Game extends Canvas implements Runnable{
 	 * sets the game state to a win state
 	 */
 	public void win() {
-		winSound.play();
 		currentState = GameState.Win;
 	}
 	
