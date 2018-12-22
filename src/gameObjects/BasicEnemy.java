@@ -120,7 +120,7 @@ public class BasicEnemy extends Enemy {
 			}
 			else if(obj.id == ID.Player) {
 				Player player = (Player)obj;
-				if(this.isColliding(player)) {
+				if(this.isColliding(player)&& this.canSeePlayer) {
 					objects.remove(player);
 				}
 			}

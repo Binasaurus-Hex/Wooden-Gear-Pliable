@@ -99,6 +99,7 @@ public class LeaderBoard extends UI_Object{
 		}
 		orderList();
 		try {
+			setText();
 			saveScores();
 		} catch (IOException e) {
 			e.printStackTrace();

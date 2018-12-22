@@ -13,6 +13,7 @@ public enum MenuID {
 	PlayAgain("Play Again",(game)->{
 		game.reset();
 		game.play();
+		game.enteringText = false;
 		}),
 	ScoreBoard("ScoreBoard",(game)->game.scoreBoard());
 	

@@ -27,9 +27,9 @@ public class TextEntry extends UI_Object {
 
 	@Override
 	public void update(CopyOnWriteArrayList<GameObject> objects) {
-		game.enteringText = true;
 		text.update();
 		if(game.currentState == GameState.Win && canType){
+			game.enteringText = true;
 			canType = false;
 			typeTimer.schedule(new TimerTask(){
 				@Override
@@ -48,6 +48,7 @@ public class TextEntry extends UI_Object {
 			else if(line.length()>0 && letter.equals("Enter")){
 				game.leaderBoard.addScore(line, game.getScore());
 				game.enteringText = false;
+				game.reset();
 				game.menu();
 			}
 			else if(!letter.equals("Backspace")&& !letter.equals("Space") && !letter.equals("Shift") && !letter.equals("Escape")){

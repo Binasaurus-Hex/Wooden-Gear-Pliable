@@ -283,7 +283,7 @@ public class Game extends Canvas implements Runnable{
 	private void render(){
 		//if the buffer hasnt been created yet, create it
 		if(this.getBufferStrategy()==null){
-			this.createBufferStrategy(3);
+			this.createBufferStrategy(2);
 		}
 		else{
 			//once buffer has been created get the graphics
