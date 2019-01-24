@@ -5,9 +5,10 @@ import java.awt.Graphics;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import Physics.MathsMethods;
-import game.Mouse;
+import game.Drawable;
 import game.Game;
 import game.ID;
+import game.Mouse;
 
 public class AimCircle extends CircleObject {
 	private Player player;
@@ -47,8 +48,13 @@ public class AimCircle extends CircleObject {
 
 	@Override
 	public void render(Graphics g) {
-		//g.drawOval((int)(x-radius),(int)(y-radius),(int)(radius*2),(int)(radius*2));
-		//g.drawOval((int)(cursor.getX()+camera.getX()-(game.getWindowWidth()/2)),(int)(cursor.getY()+camera.getY()-(game.getWindowHeight()/2)), 10, 10);
-		//g.setColor(Color.red);
+		Drawable debug = (graphics)->{
+			graphics.drawOval((int)(x-radius),(int)(y-radius),(int)(radius*2),(int)(radius*2));
+			graphics.drawOval((int)(cursor.getX()+camera.getX()-(game.getWindowWidth()/2)),(int)(cursor.getY()+camera.getY()-(game.getWindowHeight()/2)), 10, 10);
+			graphics.setColor(Color.red);
+		};
+		if(game.debug == true){
+			debug.draw(g);
+		}
 	}
 }

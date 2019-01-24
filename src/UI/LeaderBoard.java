@@ -144,7 +144,7 @@ public class LeaderBoard extends UI_Object{
 	public void update(CopyOnWriteArrayList<GameObject> objects) {
 		try {
 			loadScores();
-			System.out.println("loaded");
+			//System.out.println("loaded");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

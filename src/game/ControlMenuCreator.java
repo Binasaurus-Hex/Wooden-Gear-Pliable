@@ -42,6 +42,7 @@ public class ControlMenuCreator {
 		
 		MenuLabel controlsTitle = new MenuLabel(middleX,middleY-450,400,100,MenuID.Label,game,Game.menuFont);
 		controlsTitle.addLine("Controls");
+		controlsTitle.addLine("");
 		labels.add(controlsTitle);
 		
 		MenuLabel controls = new MenuLabel(middleX,middleY-350,400,500,MenuID.Label,game,Game.menuFontMedium);
@@ -52,7 +53,8 @@ public class ControlMenuCreator {
 				+ "Mouse : aim / shoot\n\n"
 				+ "ESC : main menu \n\n"
 				+ "P : pause menu\n\n"
-				+ "O : music on/off");
+				+ "O : music on/off\n\n"
+				+ "B : reset game");
 		
 		labels.add(controls);
 		return labels;

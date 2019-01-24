@@ -26,7 +26,6 @@ public abstract class UI_Object extends GameObject{
 		this.midX = x+halfWidth;
 		this.midY = y+halfHeight;
 		this.behaviour = menuID.getBehaviour();
-		//this.text = new TextBox(midX,midY,);
 	}
 
 	public boolean isHover() {

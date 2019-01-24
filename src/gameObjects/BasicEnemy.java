@@ -138,13 +138,12 @@ public class BasicEnemy extends Enemy {
 
 	@Override
 	public void render(Graphics g) {
-		for(Point2D.Double point:this.path) {
-			g.setColor(Color.red);
-			g.drawRect((int)(point.getX()-5),(int)(point.getY()-5),10,10);
-		}
-		if(mass == 5){
-			
-		}
+		Drawable debug = (graphics)->{
+			int nodeSize = 10;
+			for(Point2D.Double node: path){
+				graphics.drawRect((int)node.x-nodeSize,(int)y-nodeSize, nodeSize, nodeSize);
+			}
+		};
 		
 		Drawable vision = (graphics)->{
 			Color visionColor = new Color(0, 255, 0, 100);
@@ -165,6 +164,9 @@ public class BasicEnemy extends Enemy {
 		
 		renderRotated(g,vision);
 		renderRotated(g,enemy);
+		if(game.debug == true){
+			debug.draw(g);
+		}
 	}
 
 }

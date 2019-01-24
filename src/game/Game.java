@@ -15,6 +15,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import javax.swing.SwingUtilities;
+
 import UI.LeaderBoard;
 import UI.MenuID;
 import gameObjects.Camera;
@@ -53,6 +55,7 @@ public class Game extends Canvas implements Runnable{
 	public static Font menuFontSmall;
 	public static Font menuFontMedium;
 	public boolean enteringText = false;
+	public boolean debug = false;
 	
 	public Game(){
 
@@ -66,9 +69,12 @@ public class Game extends Canvas implements Runnable{
 		mouse = new Mouse();
 		
 		//initializing the main game music
+		
 		gameMusic = new Sound("/sounds/music/Magic Sword - In The Face Of Evil.wav");
-		menuMusic = new Sound("/sounds/music/Music.wav");
-		winSound = new Sound("/sounds/effects/other/tuturu.wav");
+		menuMusic = new Sound("/sounds/music/Magic Sword - In The Face Of Evil.wav");
+		winSound = new Sound("/sounds/effects/other/tuturu.wav");	
+		
+		
 		
 		//setting fonts
 		setFonts();
@@ -206,6 +212,7 @@ public class Game extends Canvas implements Runnable{
 			if(System.currentTimeMillis() - timer > 1000){
 				timer += 1000;
 				fps = frames;
+				//System.out.println(fps);
 				frames = 0;
 			}
 		}
@@ -437,6 +444,7 @@ public class Game extends Canvas implements Runnable{
 	 * @param a
 	 */
 	public static void main(String[] a){
+		
 		Game game = new Game();
 		game.start();
 	}

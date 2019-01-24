@@ -91,8 +91,6 @@ public class ObjectCreator {
 	private CopyOnWriteArrayList<GameObject> getMap(){
 		CopyOnWriteArrayList<GameObject> mapObjects = new CopyOnWriteArrayList<GameObject>();
 		
-		mapObjects.addAll(getFloors());
-		
 		Wall wall1 = new Wall(165,250,50,750,game,"1");
 		wall1.setVisible(true);
 		mapObjects.add(wall1);
@@ -190,7 +188,7 @@ public class ObjectCreator {
 		mapObjects.add(goal);
 		
 		
-		
+		//mapObjects.addAll(getFloors());
 		
 		
 		return mapObjects;
@@ -198,7 +196,9 @@ public class ObjectCreator {
 	
 	private CopyOnWriteArrayList<GameObject> getFloors(){
 		CopyOnWriteArrayList<GameObject> floors = new CopyOnWriteArrayList<GameObject>();
-		
+		Floor floor1 = new Floor(100,100,500,500,50,"/sprites/enemy/robot1.png",game);
+		floor1.setVisible(true);
+		floors.add(floor1);
 		
 		return floors;
 	}

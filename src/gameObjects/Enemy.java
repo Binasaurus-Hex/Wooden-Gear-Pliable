@@ -144,9 +144,4 @@ public abstract class Enemy extends RectangleObject{
 	public void setPath(PathList path) {
 		this.path = path;
 	}
-	
-	
-	
-	
-
 }

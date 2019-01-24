@@ -32,9 +32,11 @@ public class Wall extends RectangleObject {
 		g2d.setColor(new Color(0,33,99));
 		g2d.fillRect((int)(x-halfWidth),(int)(y-halfHeight),(int)width,(int)(height));
 		g2d.setColor(Color.black);
-		Font font = new Font("Impact",Font.PLAIN,20);
-		g2d.setFont(font);
-		g2d.drawString(name,(int)x,(int)y);
+		
+		if(game.debug == true){
+			Font font = new Font("Impact",Font.PLAIN,20);
+			g2d.setFont(font);
+			g2d.drawString(name,(int)x,(int)y);
+		}
 	}
-
 }
