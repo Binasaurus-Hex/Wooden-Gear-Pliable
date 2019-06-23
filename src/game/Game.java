@@ -9,6 +9,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferStrategy;
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -415,10 +416,10 @@ public class Game extends Canvas implements Runnable{
 	 */
 	private void setFonts(){
 		try {
-			titleFont = Font.createFont(Font.TRUETYPE_FONT,new FileInputStream(new File("res/font/METAG___.TTF"))).deriveFont(Font.PLAIN, 60);
-			menuFont = Font.createFont(Font.TRUETYPE_FONT,new FileInputStream(new File("res/font/MGS2.ttf"))).deriveFont(Font.PLAIN, 40);
-			menuFontSmall = Font.createFont(Font.TRUETYPE_FONT,new FileInputStream(new File("res/font/MGS2.ttf"))).deriveFont(Font.PLAIN, 25);
-			menuFontMedium = Font.createFont(Font.TRUETYPE_FONT,new FileInputStream(new File("res/font/MGS2.ttf"))).deriveFont(Font.PLAIN, 30);
+			titleFont = Font.createFont(Font.TRUETYPE_FONT,Game.class.getResourceAsStream("/font/METAG___.TTF")).deriveFont(Font.PLAIN, 60);
+			menuFont = Font.createFont(Font.TRUETYPE_FONT,Game.class.getResourceAsStream("/font/MGS2.ttf")).deriveFont(Font.PLAIN, 40);
+			menuFontSmall = Font.createFont(Font.TRUETYPE_FONT,Game.class.getResourceAsStream("/font/MGS2.ttf")).deriveFont(Font.PLAIN, 25);
+			menuFontMedium = Font.createFont(Font.TRUETYPE_FONT,Game.class.getResourceAsStream("/font/MGS2.ttf")).deriveFont(Font.PLAIN, 30);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -1,6 +1,8 @@
 package game;
 
+import java.io.BufferedInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -20,9 +22,9 @@ public class Sound {
         // (assuming the sound can be played by the audio system)
         // from a wave File
         try {
-            URL soundUrl = Sound.class.getResource(fileName);
+            InputStream soundUrl = Sound.class.getResourceAsStream(fileName);
             if (soundUrl != null) {
-                AudioInputStream sound = AudioSystem.getAudioInputStream(soundUrl);
+                AudioInputStream sound = AudioSystem.getAudioInputStream(new BufferedInputStream(soundUrl));
              // load the sound into memory (a Clip)
                 clip = AudioSystem.getClip();
                 clip.open(sound);

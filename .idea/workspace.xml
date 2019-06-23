@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1a5aa033-cc9b-498d-892d-944fd659aa1c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/bin/Physics/Collision.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Physics/Collision.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Physics/MathsMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Physics/MathsMethods.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Physics/PhysicsMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Physics/PhysicsMethods.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/UI/MenuButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/UI/MenuButton.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/UI/MenuID.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/UI/MenuID.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/UI/MenuLabel.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/UI/MenuLabel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/UI/TextBox.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/UI/TextBox.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/UI/UI_Object.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/UI/UI_Object.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/game/Activatable.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/game/Activatable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/game/ControlMenuCreator.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/game/ControlMenuCreator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/game/Drawable.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/game/Drawable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/game/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/game/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/game/GameState.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/game/GameState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/game/Handler.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/game/Handler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/game/ID.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/game/ID.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/game/ImageLoader.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/game/ImageLoader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/game/Key.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/game/Key.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/game/KeyInput.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/game/KeyInput.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/game/MainMenuCreator.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/game/MainMenuCreator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/game/MouseInput.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/game/MouseInput.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/game/ObjectCreator.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/game/ObjectCreator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/game/PauseMenuCreator.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/game/PauseMenuCreator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/game/ScoreCalculator.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/game/ScoreCalculator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/game/Sound.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/game/Sound.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/game/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/game/Test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/game/WinMenuCreator.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/game/WinMenuCreator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/game/Window.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/game/Window.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/gameObjects/AimCircle.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/gameObjects/AimCircle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/gameObjects/BasicEnemy$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/gameObjects/BasicEnemy$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/gameObjects/BasicEnemy.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/gameObjects/BasicEnemy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/gameObjects/Bullet$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/gameObjects/Bullet$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/gameObjects/Bullet.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/gameObjects/Bullet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/gameObjects/Camera.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/gameObjects/Camera.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/gameObjects/CircleObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/gameObjects/CircleObject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/gameObjects/Enemy.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/gameObjects/Enemy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/gameObjects/Floor.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/gameObjects/Floor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/gameObjects/GameObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/gameObjects/GameObject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/gameObjects/Goal.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/gameObjects/Goal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/gameObjects/HUD.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/gameObjects/HUD.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/gameObjects/PathList.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/gameObjects/PathList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/gameObjects/Player$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/gameObjects/Player$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/gameObjects/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/gameObjects/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/gameObjects/RectangleObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/gameObjects/RectangleObject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/gameObjects/TriangleObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/gameObjects/TriangleObject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/gameObjects/Wall.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/gameObjects/Wall.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/storage/scores.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/storage/scores.txt" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/bin/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/game/Game.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="30" column="26" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/game/Handler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/game/ID.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/game/KeyInput.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/game/Key.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/gameObjects/Player.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1360">
+              <caret line="96" column="52" selection-start-line="96" selection-start-column="52" selection-end-line="96" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/game/ObjectCreator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/UI/MenuButton.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/game/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/game/MouseInput.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/game/Window.java" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="579" />
+    <option name="y" value="276" />
+    <option name="width" value="1137" />
+    <option name="height" value="1003" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Wooden Gear Pliable" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Wooden Gear Pliable" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Wooden Gear Pliable" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Wooden Gear Pliable" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Wooden Gear Pliable" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Wooden Gear Pliable" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="game" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Wooden Gear Pliable" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Wooden Gear Pliable" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="gameObjects" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Wooden Gear Pliable" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Wooden Gear Pliable" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="UI" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551049740131" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Data Structures and Algorythms/Assignment2" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.20574713" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Game" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="game.Game" />
+      <module name="Wooden Gear Pliable" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Game" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1a5aa033-cc9b-498d-892d-944fd659aa1c" name="Default Changelist" comment="" />
+      <created>1549218054766</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1549218054766</updated>
+      <workItem from="1549218059261" duration="54000" />
+      <workItem from="1549218334476" duration="33000" />
+      <workItem from="1549218387632" duration="540000" />
+      <workItem from="1549572166962" duration="54000" />
+      <workItem from="1551049141906" duration="671000" />
+      <workItem from="1552150308517" duration="255000" />
+      <workItem from="1552426701229" duration="199000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="1806000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26599148" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="simpleUML" order="7" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32936078" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="12" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info anchor="right" id="Maven" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Database" order="8" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/UI/MenuID.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/Window.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="36" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/Activatable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="30" column="26" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/Handler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/ID.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/KeyInput.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/Key.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/ObjectCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UI/MenuButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/MouseInput.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gameObjects/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1360">
+          <caret line="96" column="52" selection-start-line="96" selection-start-column="52" selection-end-line="96" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Wooden Gear Pliable</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.20574713" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.20574713" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+  <component name="simpleUML.UMLToolWindowPlugin">
+    <General>
+      <option name="birdViewUpdateDelay" value="2000" />
+      <option name="defaultFileLocation" value="file://$PROJECT_DIR$/.." />
+    </General>
+    <Classdiagram>
+      <option name="diagramTitleFont" value="SansSerif,1,12" />
+      <option name="diagramFont" value="SansSerif,0,10" />
+      <option name="defaultFieldsExpanded" value="false" />
+      <option name="defaultContructorsExpanded" value="false" />
+      <option name="defaultMethodsExpanded" value="false" />
+      <option name="showParameters" value="true" />
+      <option name="showTooltip" value="true" />
+      <option name="showReturnValues" value="true" />
+      <option name="longModifier" value="true" />
+      <option name="implementsBehaviour" value="1" />
+      <option name="extendsBehaviour" value="1" />
+      <option name="compartmentBehaviour" value="1" />
+      <option name="interfaceBackgroundColor" value="-6494306" />
+      <option name="abstractClassBackgroundColor" value="-1580132" />
+      <option name="classBackgroundColor" value="-6508057" />
+      <option name="diagramBackgroundColor" value="-1" />
+      <option name="useAntialiasedConnectors" value="true" />
+      <option name="quickSourceLinkColor" value="-16776961" />
+      <option name="quickDiagramLinkColor" value="-8454144" />
+      <option name="drawDecorations" value="false" />
+      <option name="hideFieldList" value="" />
+      <option name="showFieldList" value="" />
+      <option name="hideConstructorList" value="" />
+      <option name="showConstructorList" value="" />
+      <option name="hideMethodList" value="" />
+      <option name="showMethodList" value="" />
+      <option name="minimumFigureSize" value="0,0" />
+    </Classdiagram>
+    <Dependencydiagram>
+      <option name="diagramTitleFont" value="SansSerif,1,12" />
+      <option name="diagramFont" value="SansSerif,0,10" />
+      <option name="diagramBackgroundColor" value="-1" />
+      <option name="useAntialiasedConnectors" value="true" />
+      <option name="packageNameCompressionLevel" value="0" />
+    </Dependencydiagram>
+    <Packagediagram>
+      <option name="diagramTitleFont" value="SansSerif,0,12" />
+      <option name="diagramFont" value="SansSerif,0,10" />
+      <option name="packageBackgroundColor" value="-4144960" />
+      <option name="diagramBackgroundColor" value="-1" />
+      <option name="useAntialiasedConnectors" value="true" />
+      <option name="packageNameCompressionLevel" value="2" />
+    </Packagediagram>
+  </component>
+</project>

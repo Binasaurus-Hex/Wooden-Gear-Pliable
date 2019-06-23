@@ -8,6 +8,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -18,7 +20,7 @@ import game.User;
 import gameObjects.GameObject;
 
 public class LeaderBoard extends UI_Object{
-	private File scoreFile;
+	private String scoreFile;
 	private ArrayList<User> users;
 	private Font font = Game.menuFontMedium;
 
@@ -33,16 +35,23 @@ public class LeaderBoard extends UI_Object{
 	 */
 	public LeaderBoard(double x,double y,double width,double height,MenuID id,Game game) {
 		super(x,y,width,height,id,game);
-		scoreFile = new File("res/storage/scores.txt");
+		
 		users = new ArrayList<User>();
 		text = new TextBox((x+halfWidth),(y+halfHeight),font,game);
+		String userDir = System.getProperty("user.home")+"/WoodenGearPliable";
+		File folder = new File(userDir);
+		boolean made = folder.mkdir();
+		scoreFile = userDir + "/scores.txt";
+		
 		try {
-			loadScores();
-			setText();
+			loadScores(scoreFile);
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		setText();
 		
 	}
 	
@@ -50,10 +59,10 @@ public class LeaderBoard extends UI_Object{
 	 * loads the scores into the LeaderBoard object
 	 * @throws IOException
 	 */
-	private void loadScores() throws IOException{
+	private void loadScores(String filename) throws IOException{
 		String line;
 		users.clear();
-		BufferedReader in = new BufferedReader(new FileReader(scoreFile));
+		BufferedReader in = new BufferedReader(new FileReader(filename));
 		while((line = in.readLine())!=null){
 			String[] entryStrings = line.split(":",2);
 			if(entryStrings.length==2){
@@ -70,7 +79,7 @@ public class LeaderBoard extends UI_Object{
 	 * saves the current scores stored in the LeaderBoard object to the file
 	 * @throws IOException
 	 */
-	private void saveScores() throws IOException{
+	private void saveScores(String filename) throws IOException{
 		FileWriter out = new FileWriter(scoreFile);
 		for(User user:users){
 			String output = String.format("%s:%d\n",user.getName(),user.getScore());
@@ -100,7 +109,7 @@ public class LeaderBoard extends UI_Object{
 		orderList();
 		try {
 			setText();
-			saveScores();
+			saveScores(scoreFile);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -143,7 +152,7 @@ public class LeaderBoard extends UI_Object{
 	@Override
 	public void update(CopyOnWriteArrayList<GameObject> objects) {
 		try {
-			loadScores();
+			loadScores(scoreFile);
 			//System.out.println("loaded");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
